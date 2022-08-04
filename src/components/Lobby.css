@@ -1,0 +1,61 @@
+.Lobby {
+    height: 100%;
+    width: 100%;
+}
+
+.Lobby-Header {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.Lobby-Header h1 {
+    font-size: 1em;
+}
+
+.Lobby-Body {
+    height: 95%;
+    width: 100%;
+}
+
+.Lobby-Players {
+    background-color: yellow;
+    height: 60%;
+    width: 100%;
+
+    display: flex;
+}
+.Lobby-Players > div {
+    width: 20%;
+    border: solid 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;   
+    display: flex;
+    flex-direction: column;
+}
+
+.Lobby-Footer { 
+    display: flex;
+    height: 40%;
+    width: 100%;
+}
+
+.Lobby-Buttons {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Lobby-Buttons button {
+    height: 100px;
+    margin: auto;
+}
+.Lobby-Map {
+    height: 100%;
+    width: 20%;
+
+    background-color: green;
+}
+

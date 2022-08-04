@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+Should my frontend and backend completely separate? 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Resource
+https://github.com/JL978/multiplayer-react-tic-tac-toe/blob/master/client/src/components/pages/Start.js
+    Main component has state variables for newGame then pass for Choice component and Lobby component 
 
-## Available Scripts
+# Frontend ( No User Needed ) 
+1. How to track being "Out of bound"
+2. Keep a game same size even when they scroll
+3. 
 
-In the project directory, you can run:
+# To Do
+1. Start creating/joining a Lobby
+2. Implement Game Logic 
+    - How to display map? 
+        = Should map be displayed by Client everytime? 
+        = Server only sends out Opponent's location? (As well as standing data) 
+3. 
 
-### `npm start`
+# Finished 
+1. Control Main Pages (Joining vs Creating a Lobby); don't worry about backend right now 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Idea
+Q. Allow zoom in to "increase" the size of the map? 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Logic
+0. (Main Page; App.js)
+    - Control bottom 3 main pages (Start, Lobby, Game)
+    State Varaibles: currentPage, host, lobby (server), loading, serverConfirmed
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. (Start page) Create or Join Lobby
+    - Create: Choose your Username, Color, Map (show Game ID)
+        - Set Host, 
+    - Join: Choose your Username, Insert Lobby Code
+        - Or join a random game
 
-### `npm run build`
+2. (Lobby Page) 
+   - 1 ~ 5 players, colors (8 choices), map, show and copy lobby code
+   - Ready button
+   - Start button (only by a host; require one person to be ready at least)
+   - Kick Button (Host can do this)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. (Game Page)
+    - Show Maps, Player, Opponents locations, Players Colors, Countdown, Timer, 
+    - Show a Leader 
+    = Once all players finish and game is over, diplsay their standing, time, and # of deaths 
+    = Afterward, return to Lobby page 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Some Ideas: 
+    3. How long it took to finish the game
+    4. Before the game start, mouse/icon can't leave the starting area
+    5. If a user steps out of boundary, they start over
+    6. If a user encounters all black color, they die 
+    7. Icon/vehicle is literally just one dot for simplicity
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Backend
+    1. Keep track of who wons
+    2. how long it took to finish the game
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 
+fetch("/api")
+.then((res) => res.json())
+.then((data) => setData(data.message));
