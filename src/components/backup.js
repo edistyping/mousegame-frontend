@@ -12,21 +12,26 @@ import socket from "./socketConfig";
 
 function App() {
   
-  const [gamerName, setGamerName] = useState(''); // User Gamer ID
+  const [data, setData] = useState(null); // Test
+  const [gamerName, setGamerName] = useState('Player 1'); // User Gamer ID
   const [host, setHost] = useState(null); // Indicate if a user is a host
   const [lobby, setLobby] = useState(""); // Game/Lobby # 
   const [lobbyCreated, setLobbyCreated] = useState(null); 
   const [serverConfirmed, setServerConfirmed] = useState(false);
 
+  const [isConnected, setIsConnected] = useState(socket.connected);
+
   React.useEffect(() => {
+
+
     // socket.on('disconnect', () => {
     //   setIsConnected(false);
     // });
     
     return () => {
-      console.log("Closing useEffect().... ")
-      socket.off('connect');
-      socket.off('disconnect');
+      // console.log("Closing useEffect().... ")
+      // socket.off('connect');
+      // socket.off('disconnect');
     
     };
   }, []);
@@ -37,11 +42,6 @@ function App() {
     setServerConfirmed(true);
   });
 
-  socket.on('joinConfirmed', (lobby) => {
-    console.log("joinConfirmed ---> lobby ID: " + lobby);
-    setLobby(lobby);
-    setServerConfirmed(true);
-  });
 
   // Determine if we are creating a new Game or joining one
   function onChoice(choice) {
@@ -63,12 +63,10 @@ function App() {
   }
   
   // Open a Lobby and provide Server lobby-ID 
-  const onJoin = () => {
-    console.log("onJoin: " + lobby)
+  const onJoin = (id) => {
     if (host === false) {
-      socket.emit('joining', {lobby: lobby} ) 
-      // setLobby(id);
-      // setServerConfirmed(true);
+      socket.emit('joinGame', {lobby: id} ) 
+      setLobby(id);
     }
   }
 
@@ -76,11 +74,12 @@ function App() {
   const onBack = () => {
     setHost(null);
     setLobbyCreated(null);
-    setServerConfirmed(false);
   }
 
   const onTyping = (e)=>{
+    //gamerName
     const target = e.target.name
+    
     switch(target){
       case 'name':
         setGamerName(e.target.value);
@@ -90,7 +89,7 @@ function App() {
     }
   }
 
-  const StartLobby = (serverConfirmed) => {
+  const StartLobby = () => {
     switch(serverConfirmed) {
       case (false):
         return (     
@@ -112,11 +111,11 @@ function App() {
       return (
         <div className="App">
           <header className="App-header">
-            <p>Connected: { serverConfirmed === true ? "Yes" : "Loading" }</p>
+            <p>Connected: { isConnected === true ? "Yes" : "Loading" }</p>
             <p>{ lobby !== "" ? "  " + lobby : "" }</p>
           </header>    
           <div className="App-body">    
-            {StartLobby(serverConfirmed)}
+            <StartLobby />
           </div>
         </div>
       ) 

@@ -1,9 +1,13 @@
+
+
 import React, { useState } from 'react';
 import './Start.css'
 
 const Start = ({host, lobby, name, onChoice, onCreate, onJoin, onBack, onTyping}) => {
 
+  console.log("Start component")
   const [lobbyID, setLobbyID] = useState("");
+
 
   switch(host) {
     case (null):
@@ -21,10 +25,9 @@ const Start = ({host, lobby, name, onChoice, onCreate, onJoin, onBack, onTyping}
     case (true):
       return (
         <div className="Create">
-          <h2 id="Start-Heaer">New Game</h2>
+          <h2 id="Start-Heaer">New Game!!!</h2>
           <div>
-            <p>Provide a Gamer Name </p><input type="text" onChange={onTyping} placeholder='Your Name?'></input>
-          </div>
+            <input name="name" value={name} onChange={onTyping} placeholder='Your Name?'></input>          </div>
           
           <div>
             <button onClick={onBack}>Back</button>
@@ -48,7 +51,7 @@ const Start = ({host, lobby, name, onChoice, onCreate, onJoin, onBack, onTyping}
 
             <div className="Join-Buttons">
               <button onClick={onBack}>Back</button>
-              <button onClick={() => {onJoin(lobbyID)}}>Join</button>
+              <button onClick={onJoin}>Join</button>
             </div>
           </div>
 

@@ -55,7 +55,30 @@
 .Lobby-Map {
     height: 100%;
     width: 20%;
-
     background-color: green;
+    display: flex;
+    flex-direction: column;
 }
+.Map {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Map img {
+    height: 90%;
+    width: 90%;
+}
+.Lobby-Map-Buttons {
+    background-color: green;
 
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+.Lobby-Map-Buttons > button {
+    width: 30%;
+    height: fit-content;
+    margin: auto;
+}

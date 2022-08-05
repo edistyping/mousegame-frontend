@@ -5,8 +5,15 @@ https://github.com/JL978/multiplayer-react-tic-tac-toe/blob/master/client/src/co
     Main component has state variables for newGame then pass for Choice component and Lobby component 
 
 # Issues:
-1. Joining and setting up users needs work 
+- A kicked user will be taken back to Home
+    - Kicked User gets an alert 
+    - Kicked player is returned to Home 
+    - Other users get updated players array
 
+
+1. Start developing Game.js
+2. Game.js will only start if Host starts the game. 
+Q. When I kick someone, is it really being deleted in server? 
 
 # Frontend ( No User Needed ) 
 1. How to track being "Out of bound"
