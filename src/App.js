@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   socket.on('newGameCreated', (lobby) => {
-    console.log("lobby ID: " + lobby);
+    console.log("newGameCreated ---> lobby ID: " + lobby);
     setLobby(lobby);
     setServerConfirmed(true);
   });
@@ -64,18 +64,14 @@ function App() {
     console.log("onCreate() is called")
     if (host === true) {
       socket.emit('newGame');
-      setServerConfirmed(true);
     } 
   }
   
   // Open a Lobby and provide Server lobby-ID 
   const onJoin = (id) => {
     if (host === false) {
-      // socket.emit('joinGame', {lobby: id} ) 
+      socket.emit('joinGame', {lobby: id} ) 
       setLobby(id);
-      setLobbyCreated(true);
-      setServerConfirmed(true);
-
     }
   }
 
@@ -87,9 +83,16 @@ function App() {
 
   const onTyping = (e)=>{
     //gamerName
-    setGamerName(e.target.value);
+    const target = e.target.name
+    
+    switch(target){
+      case 'name':
+        setGamerName(e.target.value);
+        break;
+      case 'lobby':
+        setLobby(e.target.value); 
+    }
   }
-
 
   // Render
   switch(serverConfirmed) {
@@ -104,7 +107,7 @@ function App() {
           <div className="App-body">
     
             <div className="App-Lobby">
-              <Start host={host} lobby={lobby} gamerName={gamerName} onChoice={onChoice} onCreate={onCreate} onJoin={onJoin} onBack={onBack} onTyping={onTyping} />
+              <Start host={host} lobby={lobby} name={gamerName} onChoice={onChoice} onCreate={onCreate} onJoin={onJoin} onBack={onBack} onTyping={onTyping} />
             </div> 
           </div>
         </div>

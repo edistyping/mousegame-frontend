@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Start.css'
 
-const Start = ({host, gamerName, onChoice, onCreate, onJoin, onBack, onTyping}) => {
+const Start = ({host, lobby, name, onChoice, onCreate, onJoin, onBack, onTyping}) => {
 
   const [lobbyID, setLobbyID] = useState("");
 
@@ -10,7 +10,7 @@ const Start = ({host, gamerName, onChoice, onCreate, onJoin, onBack, onTyping}) 
       return (
         <div className="Start">
           <div className='Start-Header'>
-            <h1>Mouse Race {host}</h1>
+            <h1>Mouse Race </h1>
           </div>
           <div className="Start-Buttons">
             <button onClick={() => {onChoice("new")}} choice="new" >Start a Game</button>
@@ -23,7 +23,7 @@ const Start = ({host, gamerName, onChoice, onCreate, onJoin, onBack, onTyping}) 
         <div className="Create">
           <h2 id="Start-Heaer">New Game</h2>
           <div>
-            <p>Provide a Gamer Name {host}</p><input type="text" onChange={onTyping} placeholder='Your Name?'></input>
+            <p>Provide a Gamer Name </p><input type="text" onChange={onTyping} placeholder='Your Name?'></input>
           </div>
           
           <div>
@@ -42,8 +42,8 @@ const Start = ({host, gamerName, onChoice, onCreate, onJoin, onBack, onTyping}) 
 
           <div className="Join-Body">
             <div className="Join-Input">
-              <input placeholder='Your Name?'></input>
-              <input value={lobbyID} onChange={e => setLobbyID(e.target.value)} placeholder='Enter Lobby #'></input>
+              <input name="name" value={name} onChange={onTyping} placeholder='Your Name?'></input>
+              <input name="lobby" value={lobby} onChange={onTyping} placeholder='Enter Lobby #'></input>
             </div>
 
             <div className="Join-Buttons">

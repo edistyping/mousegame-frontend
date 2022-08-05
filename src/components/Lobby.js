@@ -34,7 +34,6 @@ const ENDPOINT = 'http://localhost:3001'
 */
 const Lobby = ({host, lobby, gamerName}) => {
 
-  
   // Join the Lobby using provided ID
   // Get Lobby information
   const [players, setPlayers] = useState([]);
@@ -42,16 +41,10 @@ const Lobby = ({host, lobby, gamerName}) => {
   const [start, setStart] = useState(false);
 
   socket.on('starting', (gameState, players, turn) => {
-    console.log("players ID!! ");
+    console.log("players ID! ");
     console.log(players);
     setPlayers(players);
   });
-
-  const name = gamerName    
-  const lobbyID = lobby
-
-  // Issue here. lobby is not received by in server
-  console.log("Inside Lobby.js --> Lobby: " + lobby + "  name: " + name);
   
   React.useEffect(() => {
     socket.on('connect', () => {
@@ -59,9 +52,7 @@ const Lobby = ({host, lobby, gamerName}) => {
     socket.on('disconnect', () => {
     });
     
-    console.log("(UseEffect) Inside useEffect in Lobby.js --> Lobby: " + lobby + "  name: " + name);
-
-    socket.emit('newLobbyJoin', {lobbyID, name})
+    socket.emit('newLobbyJoin', {lobby, gamerName})
     // const {lobby2, name} = qs.parse(window.location.search, {
     //   ignoreQueryPrefix: true
     //  })    
@@ -90,7 +81,9 @@ const Lobby = ({host, lobby, gamerName}) => {
               (Ready Status) 
               <button>Kick</button>
             </div>
-            <div></div>
+            <div>
+              <p>Joiend Players: {players}</p>
+            </div>
             <div>3</div>  
             <div>4</div>
             <div>No Player Joined</div>

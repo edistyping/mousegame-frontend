@@ -5,10 +5,7 @@ https://github.com/JL978/multiplayer-react-tic-tac-toe/blob/master/client/src/co
     Main component has state variables for newGame then pass for Choice component and Lobby component 
 
 # Issues:
-I think Lobby.js the order data is sent... 
-1. In 'newLobbyJoin', it's not raceving 'lobby' data for some reason.
-2. Whenver I start server, it runs 'joinLobby' for some reasons.
-
+1. Joining and setting up users needs work 
 
 
 # Frontend ( No User Needed ) 
