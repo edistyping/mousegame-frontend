@@ -4,6 +4,13 @@ Should my frontend and backend completely separate?
 https://github.com/JL978/multiplayer-react-tic-tac-toe/blob/master/client/src/components/pages/Start.js
     Main component has state variables for newGame then pass for Choice component and Lobby component 
 
+# Issues:
+I think Lobby.js the order data is sent... 
+1. In 'newLobbyJoin', it's not raceving 'lobby' data for some reason.
+2. Whenver I start server, it runs 'joinLobby' for some reasons.
+
+
+
 # Frontend ( No User Needed ) 
 1. How to track being "Out of bound"
 2. Keep a game same size even when they scroll

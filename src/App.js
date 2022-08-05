@@ -110,21 +110,21 @@ function App() {
         </div>
       );
       case (true):
-      return (
-        <div className="App">
-          <header className="App-header">
-            <p>Connected: { isConnected === true ? "Yes" : "Loading" }</p>
-            <p>{ lobby !== "" ? "  " + lobby : "" }</p>
-          </header>
-    
-          <div className="App-body">
-    
-            <div className="App-Lobby">
-              <Lobby host={host} lobby={lobby} gamerName={gamerName} />
-            </div> 
+        return (
+          <div className="App">
+            <header className="App-header">
+              <p>Connected: { isConnected === true ? "Yes" : "Loading" }</p>
+              <p>{ lobby !== "" ? "  " + lobby : "" }</p>
+            </header>
+      
+            <div className="App-body">
+      
+              <div className="App-Lobby">
+                <Lobby host={host} lobby={lobby} gamerName={gamerName} />
+              </div> 
+            </div>
           </div>
-        </div>
-      )
+        )
       break;
     }
 

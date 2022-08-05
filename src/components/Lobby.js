@@ -41,10 +41,6 @@ const Lobby = ({host, lobby, gamerName}) => {
   const [ready, setReady] = useState(false);
   const [start, setStart] = useState(false);
 
-  socket.on('pieceAssignment', (name, lobby) => {
-    console.log("lobby ID: " + lobby + ' -' + name);
-  });
-
   socket.on('starting', (gameState, players, turn) => {
     console.log("players ID!! ");
     console.log(players);
@@ -52,15 +48,20 @@ const Lobby = ({host, lobby, gamerName}) => {
   });
 
   const name = gamerName    
-  console.log("Inside Lobby.js --> Lobby: " + lobby + "  name: " + name);
-  socket.emit('newLobbyJoin', {lobby, name})
+  const lobbyID = lobby
 
+  // Issue here. lobby is not received by in server
+  console.log("Inside Lobby.js --> Lobby: " + lobby + "  name: " + name);
+  
   React.useEffect(() => {
     socket.on('connect', () => {
     });    
     socket.on('disconnect', () => {
     });
+    
+    console.log("(UseEffect) Inside useEffect in Lobby.js --> Lobby: " + lobby + "  name: " + name);
 
+    socket.emit('newLobbyJoin', {lobbyID, name})
     // const {lobby2, name} = qs.parse(window.location.search, {
     //   ignoreQueryPrefix: true
     //  })    
