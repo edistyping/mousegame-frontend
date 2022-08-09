@@ -1,0 +1,27 @@
+
+.Game {
+    height: 100%;
+    width: 100%;
+
+    margin: auto;
+    background-color: yellow;
+}
+
+.Game-Header {
+    height: 5%;
+    width: 100%;
+    background-color: gray;
+}
+
+.Game-Body {
+
+    border: 10px solid red;
+    height: 700px;
+    width: 1200px;
+    margin: auto;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}

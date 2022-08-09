@@ -50,7 +50,6 @@ function App() {
     if (host === true) {
       setLobbyCreated(true); 
     }
-
     setHost(host);
   }
 
@@ -90,6 +89,10 @@ function App() {
     }
   }
 
+  const onReset = (e) => {
+    setLobby("")
+  }
+
   const StartLobby = (serverConfirmed) => {
     switch(serverConfirmed) {
       case (false):
@@ -101,14 +104,13 @@ function App() {
         case (true):
           return (        
             <div className="App-Lobby">
-              <Lobby host={host} lobby={lobby} name={gamerName} onBack={onBack} />
+              <Lobby host={host} lobby={lobby} name={gamerName} onBack={onBack} onReset={onReset} />
             </div> 
           )
         break;
       }
     }
 
-  // Render
       return (
         <div className="App">
           <header className="App-header">

@@ -5,3 +5,4 @@ export default [
     Map1,
     Map2
 ];
+
