@@ -3,67 +3,27 @@ https://embiem.github.io/react-canvas-draw/
 
 # Resource
 https://github.com/JL978/multiplayer-react-tic-tac-toe/blob/master/client/src/components/pages/Start.js
-    Main component has state variables for newGame then pass for Choice component and Lobby component 
+
+https://embiem.github.io/react-canvas-draw/
+
+Game Rule:
+    1. Start and End area
+        - Set initial position to 'Start'
+        - Once Player reaches End, the icon disappears and Header is updated (ie. "Finished!")
+    2. Roads (White/Grey Color)
+        - If go out of binds, start over (Set initial position to Start)
+
+
+# To DO
+    1. Game Component
+        2. Canvas + LazyMouse
+            - Show Mouse Icon and follow as it hover
+            - Starting Position and End Position
+            - If I go out of bounds (entering certain background color, )
+            - Can Zoom In
+
 
 # Issues:
-
-1. Setting setReady
-    - If Host, starts the game right away
-        Q. How do I do this? (lobby, players)
-    - If all users excluding Host are ready, starts the gae. 
-        - Give 5 seocnds time out
-
-2. Game - Show all players name and just game. 
-
-
-
-
-Player (id, lobby, name, ready)
-1. Finish Kicking players
-    - Server: Update the Players list in Server and send back to client
-    - Clinet: Have a array(5) in Frontend. 
-        - Add a new user to an empty slot
-        - If kick, find the matching one and "empty" it.
-        - 
-Initial        
-players:         [0]   [0, 1]  [0, 1, 2]  [0, 2]      [0, 2, 3]
-display_players: [0]   [0, 1]  [0, 1, 2]  [0, -, 2]   [0, 3, 2]
-
-players:         [0, 1, 2]  [0, 2]      [0, 2, 3]
-display_players: [0, 1, 2] [0, 1]  [0, 1, 2]  [0, -, 2]   [0, 3, 2]
-
-What happens when a player is added (and new players are provided to all user)
-    - Update players and displayPlayers
-        = Check if players are all in displayPlayers
-            - If not, add 
-
-What happens when a player is kicked?
-    - Update players then use that to update displayPlayers
-    
-
-        - traverse players
-            - check if players[i] exists in display_players
-                - if does't exist, add it
-                - if '-', which represents "empty" spot, replace that one 
-        
-
-        My View
-        0   Host                0 Host              0 Host
-        1   Player 1            1 ""                1 Player 3
-        2   Player 2            2 Player 2          2 Player 2
-        3                       3                   3
-        4                       4                   4
-
-        User View
-        0   Host                0 Host              0 Host
-        1   Player 1            1 ""                1 Player 3
-        2   Player 2            2 Player 2          2 Player 2
-        3                       3                   3
-        4                       4                   4
-       
-       
-        1. 
-
 socket.emit - will send back message to sender only,
 io.emit     - will send message to all the client including sender
 socket.broadcast.emit - if you want to send message to all but not back to sender 
